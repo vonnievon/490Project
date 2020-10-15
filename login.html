@@ -28,3 +28,39 @@
           </center>
   </body>
 </html>
+
+Save New Duplicate & Edit Just Text Twitter
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+<?php
+
+/*Link the username and password fields to 'username' and 'password' from the login.html*/
+  $user = $_POST['user'];		
+  $pwd = $_POST['pwd'];
+  
+  $ch = curl_init();		//Initializes Curl
+  
+  curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~oaw5/CS490/mid/signin.php");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, "user=$user&pwd=$pwd");
+
+  $result = curl_exec($ch);
+  
+  curl_close($ch);
+  
+?>
