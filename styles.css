@@ -1,0 +1,21 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.container {
+ text-align: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+}
+
+.welcome-box {
+  display: block;
+  padding: 50px;
+}
+
+.login-form {
+  padding: 50px;
+  display: block;
+  text-align: left;
+}
