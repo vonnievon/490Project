@@ -1,64 +1,30 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login Form</title
+    <title>Login Form</title>
 
   </head>
 
   <body>
     <center>
-      <h3>Login Here</h3>
-      <form action="login.php" method="post">
-
-          <table>
-            <tr>
-              <td>Username:
-                <td>
-                  <input type="text" name="user">
-            </tr>
-              <td>Password:</td>
-              <td><input type="password" name="user_password" value=""></td>
-
-              <tr>
-                <td>
-                  <input type="submit" name="submit" value="Login">
-                </td>
-              </tr>
+      <h1>Login Here</h1>
+      <form action="signin.php" method="POST">
+          <input type="text" name="user" placeholder="Username">
+          <br>
+          <input type="password" name="pwd" placeholder="Password"> 
+          <br>
+          <br>
+          <input type="submit" name="login-submit" value="Login"></button> 
+      </form>
 
               <td>
-                Not yet a Member?<a href="index.html"> Register</a>
+                Not yet a Member?<a href="index.html">Register</a>
               </td>
           </table>
-    </center>
+          </center>
   </body>
 </html>
-      <script>
-function sendLoginInfo(){
-var username=String(document.getElementById("username").value);
-var password=String(document.getElementById("password").value);
-	         if (window.HTMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            htmlhttp = new HTMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            htmlhttp = new ActiveXObject("Microsoft.HTMLHTTP");
-        }
-        htmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {								
-				var message_res=this.responseText;
-				var res=JSON.parse(message_res);
-				localStorage.id=res.id;
-				
-				if(res.type=="success"){
-				console.log("success");				
-				window.location.href = "homepage.html";
-				}
-            }
-        };
-        htmlhttp.open("POST","curl/login_user.php",true);
-		htmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        htmlhttp.send("username="+username+"&password="+password);	
-	
-}
-</script>
-
