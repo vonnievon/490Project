@@ -1,79 +1,55 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   </head>
   <body>
-  <div class="container">
 
-    <div class="welcome-box">
+    <h1> Welcome to our page lets get lit </h1>
 
-      <h1> Welcome to our page lets get lit </h1>
 
-      <p>
-        You're almost on your way to the best college social networking experience ever!
-      </p>
+<p>
+  You're almost on your way to the best college social networking experience ever!
+</p>
 
-    </div>
-<div class="login-form">
-  <form action="login.php" method="post">
-    <div>
-      <label>First Name</label>
-      <input type="text" name= "firstName"
-      placeholder="Enter first name">
-    </div>
-    <div>
-        <label>Last Name</label>
-        <input type="text" name= "lastName"
-        placeholder="Enter last name">
-    </div>
-      <br>
-    <div>
-      <label>Email</label>
-      <input type="email" name= "email"
-      placeholder="Enter Email">
-      <br>
-      <label>Password</label>
-      <input type="password" name="pwd" placeholder="Password">
-      <br>
-      <br>
+<br>
 
-      <label> Gender</label>
-        <select name="Gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">other</option>
-        </select>
-      <div>
-        <br>
-        <label>Age:</label>
-        <input type="number" name="age"
-        value+"30" placeholder="Enter Age">
-    </div>
+<form action="register.php" method="POST">
+
+    <input type="text" name="user" placeholder="Username">
     <br>
-      <label>Birthday</label>
-      <input type= "date" name="birthday">
+    <input type="text" name="email" placeholder="E-mail">
+    <br>
+    <input type="password" name="pwd" placeholder="Password"> 
+    <br>
+    <br>
+    <label>Gender</label>
+    <select name="Gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">other</option>
+      </select>
+    <div>
       <br>
-      <br>
-      <div>
-      <input type="submit" name="submit"
-      value="submit"
+      <label>Age:</label>
+      <input type="number" name="age" placeholder="Enter Age">
     </div>
-      </form>
-</div>
-
-
-
-  </div>
-
-  <div>
-    <a href="homepage.html">Next</a>
-  </div>
+  <br>
+    <label>Birthday</label>
+    <input type= "date" name="birthday">
+    <br>
+    <br>
+    <button type="submit" name="submit">Sign up</button> 
+</form>
 
 
   </body>
-
+  </div>
+    <br>
+    <a href="login.html">To Log In</a>
 </html>
