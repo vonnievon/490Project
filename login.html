@@ -32,3 +32,33 @@
     </center>
   </body>
 </html>
+      <script>
+function sendLoginInfo(){
+var username=String(document.getElementById("username").value);
+var password=String(document.getElementById("password").value);
+	         if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {								
+				var message_res=this.responseText;
+				var res=JSON.parse(message_res);
+				localStorage.id=res.id;
+				
+				if(res.type=="success"){
+				console.log("success");				
+				window.location.href = "homepage.html";
+				}
+            }
+        };
+        xmlhttp.open("POST","curl/login_user.php",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send("username="+username+"&password="+password);	
+	
+}
+</script>
+
