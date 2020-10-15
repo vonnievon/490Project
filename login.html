@@ -38,12 +38,12 @@ var username=String(document.getElementById("username").value);
 var password=String(document.getElementById("password").value);
 	         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
+            htmlhttp = new HTMLHttpRequest();
         } else {
             // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange = function() {
+        htmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {								
 				var message_res=this.responseText;
 				var res=JSON.parse(message_res);
@@ -55,9 +55,9 @@ var password=String(document.getElementById("password").value);
 				}
             }
         };
-        xmlhttp.open("POST","curl/login_user.php",true);
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp.send("username="+username+"&password="+password);	
+        htmlhttp.open("POST","curl/login_user.php",true);
+		htmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        htmlhttp.send("username="+username+"&password="+password);	
 	
 }
 </script>
