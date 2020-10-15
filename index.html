@@ -52,4 +52,23 @@
   </div>
     <br>
     <a href="login.html">To Log In</a>
+
+<?php
+
+/*Link the username,password, email fields to 'username' and 'password' from the signin.html*/
+  $user = $_POST['user'];
+  $email = $_POST['email'];	
+  $pwd = $_POST['pwd'];
+  
+  $ch = curl_init();		//Initializes Curl
+  
+  curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~oaw5/CS490/mid/register.php");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, "user=$user&email=$email&pwd=$pwd");
+
+  $result = curl_exec($ch);
+  
+  curl_close($ch);
+  
+?>
 </html>
