@@ -36,12 +36,12 @@
 function sendLoginInfo(){
 var username=String(document.getElementById("username").value);
 var password=String(document.getElementById("password").value);
-	         if (window.XMLHttpRequest) {
+	         if (window.HTMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             htmlhttp = new HTMLHttpRequest();
         } else {
             // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            htmlhttp = new ActiveXObject("Microsoft.HTMLHTTP");
         }
         htmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {								
