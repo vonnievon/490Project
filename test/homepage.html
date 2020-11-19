@@ -1,0 +1,652 @@
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+/* ---------- LIVE-CHAT ---------- */
+.message {
+max-height:300px;
+overflow-y:scroll;
+
+}
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+#live-chat {
+bottom: 0;
+font-size: 12px;
+right: 24px;
+position: fixed;
+width: 300px;
+}
+
+#live-chat header {
+background: #293239;
+border-radius: 5px 5px 0 0;
+color: #fff;
+cursor: pointer;
+padding: 16px 24px;
+}
+
+#live-chat h4:before {
+background: #1a8a34;
+border-radius: 50%;
+content: "";
+display: inline-block;
+height: 8px;
+margin: 0 8px 0 0;
+width: 8px;
+}
+
+#live-chat h4 {
+font-size: 12px;
+}
+
+#live-chat h5 {
+font-size: 10px;
+}
+
+#live-chat form {
+padding: 24px;
+}
+
+#live-chat input[type="text"] {
+border: 1px solid #ccc;
+border-radius: 3px;
+padding: 8px;
+outline: none;
+width: 234px;
+}
+
+.chat-message-counter {
+background: #e62727;
+border: 1px solid #fff;
+border-radius: 50%;
+display: none;
+font-size: 12px;
+font-weight: bold;
+height: 28px;
+left: 0;
+line-height: 28px;
+margin: -15px 0 0 -15px;
+position: absolute;
+text-align: center;
+top: 0;
+width: 28px;
+}
+
+.chat-close {
+background: #1b2126;
+border-radius: 50%;
+color: #fff;
+display: block;
+float: right;
+font-size: 10px;
+height: 16px;
+line-height: 16px;
+margin: 2px 0 0 0;
+text-align: center;
+width: 16px;
+}
+
+.chat {
+background: #fff;
+}
+
+.chat-history {
+height: 252px;
+padding: 8px 24px;
+overflow-y: scroll;
+}
+
+.chat-message {
+margin: 16px 0;
+}
+
+.chat-message img {
+border-radius: 50%;
+float: left;
+}
+
+.chat-mess
+</style>
+<body class="w3-theme-l5">
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+ 
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="#" onclick="OpenMessages()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Message"><i class="fa fa-envelope"></i></a>
+  </div>
+ </div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:50px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white profile-info">
+        <div class="w3-container">
+         <h4 class="w3-center">My Profile</h4>
+         <p class="w3-center"><img src="images/user.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+		 <p class="w3-center" id="user-name"></p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Message Modal -->
+<div id="message_model" class="w3-modal">
+ <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+  <header class="w3-container w3-blue"> 
+   <span onclick="document.getElementById('message_model').style.display='none'" 
+   class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+   <h2>Messages</h2>
+  </header>
+
+  <div id="message_content" class="w3-container message">
+
+  </div>
+
+  <div class="w3-container w3-light-grey w3-padding">
+   <button class="w3-button w3-right w3-white w3-border" 
+   onclick="document.getElementById('message_model').style.display='none'">Close</button>
+  </div>
+ </div>
+</div>
+      <br>
+      
+      <!-- Interests --> 
+      <br>
+      
+      <!-- Alert Box -->
+
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+    	
+        <!-- User List For Chat -->
+        <div class="w3-row-padding">
+        	<div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+            <h6 class="w3-opacity">Users</h6>
+            	<div class="scrollmenu" id="userslist">
+				</div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <br>
+		
+		<!-- Post -->
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Make post here</h6>
+              <p contenteditable="true" id="post_box" class="w3-border w3-padding">Status: Feeling Blue</p>
+			  <input class="w3-input w3-border" type="file" id="myFile" name="filename">
+              <button type="button" onclick="SendPost()" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button> 
+            </div>
+          </div>
+        </div>
+      </div>
+       
+	  <br> 
+      
+	  <!-- Message -->
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Send Message To</h6>
+              <select class="w3-select" name="option" id="user-message-list">
+  				<option value="" disabled selected>Select User to Send Message To</option>
+			   </select>
+              <p contenteditable="true" id="message_box" class="w3-border w3-padding">Type here...</p>
+              <button type="button" onclick="SendMessage()" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Send</button> 
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <!-- Posts Pop up Here -->
+	  <div id="post-section">
+      
+	  </div>
+	  
+	  <!-- Chat Box -->
+      <div id="live-chat">
+
+<header class="clearfix">
+
+<a href="#" class="chat-close">x</a>
+
+<h4 id="chat-username">user</h4>
+
+</header>
+
+<div class="chat">
+
+<div class="chat-history" id="chat-history">
+
+
+</div> <!-- end chat-history -->
+
+
+
+
+<fieldset>
+
+<input type="text" id="chat-box" placeholder="Type your message…" autofocus>
+<input type="hidden">
+
+</fieldset>
+
+
+
+</div> <!-- end chat -->
+
+</div> <!-- end live-chat -->
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-d3 w3-padding-16 w3-center">
+  <h5>Social Network</h5>
+</footer>
+ 
+<script>
+userId=localStorage.userId;
+toUser=-1;
+toUserName='';
+$(document).ready(function(){
+LoadPosts();
+LoadUsers();
+document.getElementById("user-name").innerHTML=localStorage.userName;
+$('#live-chat').hide();
+});
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+function LoadPosts(){
+document.getElementById("post-section").innerHTML="";
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+			var message_res=this.responseText;
+				var json_array=JSON.parse(message_res);
+            for(i=0;i<json_array.length;i++){
+			var postdata=json_array[i];
+			if(postdata.src!=""){
+			document.getElementById("post-section").innerHTML+='<div class="w3-container w3-card w3-white w3-round w3-margin"><br><img src="images/user.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"><h4>'+postdata.username+'</h4><br><hr class="w3-clear"><p class="user-post">'+postdata.post+'</p><div class="image"><div class="w3-row-padding" style="margin:0 -16px"><div class="w3-half"><img src="'+postdata.src+'" style="width:100%" alt="img" class="w3-margin-bottom"></div></div></div><div class="comments-section" data-id='+postdata.id+'></div><div class="w3-container comment-section"><p contenteditable="true" class="w3-border w3-padding comments">Comment here...</p><button type="button" data-id='+postdata.id+' onclick="SendComment(this)" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </div></div>';
+               }else{
+			   document.getElementById("post-section").innerHTML+='<div class="w3-container w3-card w3-white w3-round w3-margin"><br><img src="images/user.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"><h4>'+postdata.username+'</h4><br><hr class="w3-clear"><p class="user-post">'+postdata.post+'</p><div class="image"><div class="w3-row-padding" style="margin:0 -16px"></div></div><div class="comments-section" data-id='+postdata.id+'></div><div class="w3-container comment-section"><p contenteditable="true" class="w3-border w3-padding comments">Comment here...</p><button type="button" data-id='+postdata.id+' onclick="SendComment(this)" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </div></div>';
+               
+			   }console.log(json_array[i]);
+            }
+			LoadComments();
+            }
+        };
+        xmlhttp.open("POST","curl/load_posts.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send();
+}
+
+function LoadComments(){
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+			var message_res=this.responseText;
+			var json_array=JSON.parse(message_res);
+			var comment_elements=document.getElementsByClassName("comments-section");
+            for(i=0;i<json_array.length;i++){
+				var commentdata=json_array[i];
+				for(j=0;j<comment_elements.length;j++){
+					console.log(comment_elements[j].getAttribute("data-id"));
+					if(comment_elements[j].getAttribute("data-id")==commentdata.postId){
+						console.log("got one");
+						comment_elements[j].innerHTML+='<div class="w3-container comment"><p>'+commentdata.username+':'+commentdata.comment+'</p></div>';
+						break;
+					}
+				}
+            }
+           }
+        };
+        xmlhttp.open("POST","curl/load_comments.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send();
+}
+
+function LoadMessages(){
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+			var message_res=this.responseText;
+			document.getElementById("message_content").innerHTML="";
+				var json_array=JSON.parse(message_res);
+            for(i=0;i<json_array.length;i++){
+			var messages=json_array[i];
+			document.getElementById("message_content").innerHTML+='<div class="msg"><h1>'+messages.username+'</h1><p>'+messages.message+'</p></div><hr>';
+			  
+               //console.log(json_array[i]);
+            }
+            }
+        };
+        xmlhttp.open("POST","curl/load_messages.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("userId="+userId);
+}
+
+function LoadUsers(){
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+			var message_res=this.responseText;
+				var json_array=JSON.parse(message_res);
+            for(i=0;i<json_array.length;i++){
+			var userinfo=json_array[i];
+			document.getElementById("userslist").innerHTML+='<a href="#" data-id='+userinfo.id+' onclick="OpenChatBox(this)">'+userinfo.username+'</a>';
+			var sel = document.getElementById("user-message-list");
+
+			var opt = document.createElement("option");
+			opt.value = userinfo.id;
+			opt.text = userinfo.username;
+
+			sel.add(opt, null);
+               console.log(json_array[i]);
+            }
+            }
+        };
+        xmlhttp.open("POST","curl/load_users.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("userId="+userId);
+}
+
+
+function SendPost(){
+var pstval=document.getElementById("post_box").innerHTML;
+if(pstval==""){
+alert("Please insert message");
+}
+else
+{
+var file = $("#myFile")[0].files[0];
+
+var formData = new FormData();
+formData.append("userId", userId);
+formData.append("post", pstval);
+formData.append("myFile", file);
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("post_box").innerHTML="";
+                LoadPosts();
+            }
+        };
+		
+        xmlhttp.open("POST","curl/send_post.php",true);
+        //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send(formData);
+}
+}
+
+function SendComment(info){
+
+var cmtval=info.parentElement.getElementsByClassName("comments")[0].innerHTML;
+console.log(cmtval);
+if(cmtval==""){
+alert("Please insert comment");
+}
+else
+{
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+				////info.parentElement.getElementsByClassName("comments")[0].innerHTML="";
+                LoadPosts();
+            }
+        };
+        xmlhttp.open("POST","curl/send_comment.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("userId="+userId+"&comment="+cmtval+"&postId="+info.getAttribute("data-id"));
+}
+}
+
+function SendMessage(info){
+var msgval=document.getElementById("message_box").innerHTML;
+var selectedUser=document.getElementById("user-message-list").value;
+console.log(selectedUser);
+if(msgval==""){
+alert("Please enter message");
+}
+else
+{
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("message_box").innerHTML="";
+            }
+        };
+        xmlhttp.open("POST","curl/send_message.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("userId="+userId+"&toId="+selectedUser+"&message="+msgval);
+}
+
+}
+
+function SendChatMessage(){
+
+var chatval=document.getElementById("chat-box").value;
+console.log(chatval);
+if(chatval==""){
+alert("Please insert message");
+}
+else
+{
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("chat-box").value="";
+                LoadChatMessages();
+            }
+        };
+        xmlhttp.open("POST","curl/send_chat.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("userId="+userId+"&toId="+toUser+"&message="+chatval);
+}
+}
+function LoadChatMessages(){
+if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+			var message_res=this.responseText;
+			var json_array=JSON.parse(message_res);
+			document.getElementById("chat-history").innerHTML="";
+            for(i=0;i<json_array.length;i++){
+			var chatsmg=json_array[i];
+			var usern=(chatsmg.fromId==toUser)?toUserName:localStorage.userName;
+			document.getElementById("chat-history").innerHTML+='<div class="chat-message clearfix"><img src="images/userchat.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><h5>'+usern+'</h5><p>'+chatsmg.message+'</p></div></div><hr>';
+               //console.log(json_array[i]);
+            }
+            }
+        };
+        xmlhttp.open("POST","curl/load_chat.php",true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("userId="+userId+"&toId="+toUser);
+}
+
+function setToUser(id){
+toUser=id;
+}
+
+function OpenChatBox(user){
+LoadComments();
+document.getElementById("chat-username").innerHTML=user.innerHTML;
+toUser=user.getAttribute("data-id");
+toUserName=user.innerHTML;
+LoadChatMessages();
+$('#live-chat').fadeIn(300);
+
+}
+
+function OpenMessages(){
+document.getElementById('message_model').style.display='block';
+LoadMessages();
+}
+
+//live chat functions
+(function() {
+
+$('#live-chat header').on('click', function() {
+
+$('.chat').slideToggle(300, 'swing');
+$('.chat-message-counter').fadeToggle(300, 'swing');
+
+});
+
+$('.chat-close').on('click', function(e) {
+
+e.preventDefault();
+$('#live-chat').fadeOut(300);
+
+});
+
+}) ();
+
+var input = document.getElementById("chat-box");
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    SendChatMessage();
+  }
+});
+
+
+var myVar = setInterval(isChatOpen, 1000);
+
+function isChatOpen() {
+  var x = document.getElementById("live-chat");
+  if (window.getComputedStyle(x).display === "block") {
+    LoadChatMessages();
+  }
+}
+</script>
+
+</body>
+</html> 
